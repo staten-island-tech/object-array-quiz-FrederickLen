@@ -51,28 +51,28 @@ const symptoms = [
 ];
 
 //1) Filter all symptoms, leaving only the Strong ones.
-const Serious = symptoms.filter((symptoms) => symptoms.severity === "S");
+const Strong = symptoms.filter((symptoms) => symptoms.severity === "S");
 
-console.table(Serious);
+console.table(Strong);
 
 //2) Filter all symptoms, leaving only weak symptoms with an occurence higher than 2.
-const Long = symptoms.filter(
+const Weak = symptoms.filter(
   (symptoms) => symptoms.severity === "W" && symptoms.occurrence < 2
 );
 
-console.table(Long);
+console.table(Weak);
 
 //3) Make a table with only the first 6 symptoms.
-const lastThree = symptoms.slice(0, 6);
+const firstSix = symptoms.slice(0, 6);
 
-console.table(lastThree);
+console.table(firstSix);
 
 //4) Log all symptoms with a strong severity and an occurence of 4.
-const Frequency = symptoms.filter(
+const Frequent = symptoms.filter(
   (symptoms) => symptoms.severity === "S" && symptoms.occurrence === 4
 );
 
-console.log(Frequency);
+console.log(Frequent);
 
 //5) Write a script to check if the occurence for the symptom "Loss of Taste and Smell" is at least 3 or higher.
 // If it is, then alert ("It's a COVID-19 Pandemic!"), otherwise alert ("It's Just Influenza")
