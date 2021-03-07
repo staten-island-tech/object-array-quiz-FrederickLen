@@ -28,50 +28,61 @@
 // //3) return only the last three presidents
 // const lastThree = presidents.slice(-3);
 
-// console.table(lastThree);
+// console.log(lastThree);
 
 // //4) log all dems who served 2 terms. HINT use chain filter, filter and slice
 // const democratsTwo = presidents.filter(
 //   (president) => president.party === "D" && president.terms === 2
 // );
-
+// console.log(democratsTwo);
 // //BONUS write a script to check if LBJ was a 2 term president. IF he was then alert("LBJ served two terms") else alert "LBJ was one and done"
 
 const symptoms = [
-  { symptom: "Fever", onset: 1, severity: "R" },
-  { symptom: "Aches", onset: 2, severity: "D" },
-  { symptom: "Chills", onset: 2, severity: "R" },
-  { symptom: "Fatigue", onset: 2, severity: "D" },
-  { symptom: "Weakness", onset: 1, severity: "R" },
-  { symptom: "Sneezing", onset: 2, severity: "R" },
-  { symptom: "Coughing", onset: 1, severity: "D" },
-  { symptom: "Stuffy Nose", onset: 1, severity: "R" },
-  { symptom: "Sore Throat", onset: 2, severity: "R" },
-  { symptom: "Headache", onset: 1, severity: "D" },
-  { symptom: "Lyndon Johnson", onset: 2, severity: "D" },
-  { symptom: "Dwight Eisenhower", onset: 2, severity: "R" },
+  { symptom: "Fever", occurrence: 1, severity: "S" },
+  { symptom: "Aches", occurrence: 4, severity: "W" },
+  { symptom: "Chills", occurrence: 3, severity: "W" },
+  { symptom: "Fatigue", occurrence: 2, severity: "W" },
+  { symptom: "Sneezing", occurrence: 1, severity: "W" },
+  { symptom: "Coughing", occurrence: 1, severity: "W" },
+  { symptom: "Stuffy Nose", occurrence: 2, severity: "S" },
+  { symptom: "Sore Throat", occurrence: 3, severity: "W" },
+  { symptom: "Headache", occurrence: 4, severity: "S" },
+  { symptom: "Loss of Taste and Smell", occurrence: 4, severity: "S" },
 ];
 
-//1) Filter all presidents, leaving only the Democratic ones
-const democrats = symptoms.filter((symptoms) => symptoms.severity === "D");
+//1) Filter all symptoms, leaving only the Strong ones.
+const Serious = symptoms.filter((symptoms) => symptoms.severity === "S");
 
-console.table(democrats);
+console.table(Serious);
 
-//2)Filter all presidents to leave only one term Republican presidents HINT use If statement
-const republicans = symptoms.filter(
-  (symptoms) => symptoms.severity === "R" && symptoms.onset === 1
+//2) Filter all symptoms, leaving only weak symptoms with an occurence higher than 2.
+const Long = symptoms.filter(
+  (symptoms) => symptoms.severity === "W" && symptoms.occurrence < 2
 );
 
-console.table(republicans);
+console.table(Long);
 
-//3) return only the last three presidents
-const lastThree = symptoms.slice(-3);
+//3) Make a table with only the first 6 symptoms.
+const lastThree = symptoms.slice(0, 6);
 
 console.table(lastThree);
 
-//4) log all dems who served 2 terms. HINT use chain filter, filter and slice
-const democratsTwo = symptoms.filter(
-  (symptoms) => symptoms.severity === "D" && symptoms.onset === 2
+//4) Log all symptoms with a strong severity and an occurence of 4.
+const Frequency = symptoms.filter(
+  (symptoms) => symptoms.severity === "S" && symptoms.occurrence === 4
 );
 
-//BONUS write a script to check if LBJ was a 2 term president. IF he was then alert("LBJ served two terms") else alert "LBJ was one and done"
+console.log(Frequency);
+
+//5) Write a script to check if the occurence for the symptom "Loss of Taste and Smell" is at least 3 or higher.
+// If it is, then alert ("It's a COVID-19 Pandemic!"), otherwise alert ("It's Just Influenza")
+const diagnosis = symptoms.filter(
+  (symptoms) => symptoms.symptom === "Loss of Taste and Smell"
+);
+const COVID = diagnosis.filter((verdict) => {
+  if (verdict.symptom === "Loss of Taste and Smell" || verdict.occurence <= 3) {
+    alert("It's a COVID-19 Pandemic!");
+  } else {
+    alert("It's just Influenza");
+  }
+});
